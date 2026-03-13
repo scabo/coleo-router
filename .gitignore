@@ -1,7 +1,7 @@
 /vendor/
 /phpunit.result.cache
 
-/build/cache
+/build/
 
 .idea/
 .vscode/
