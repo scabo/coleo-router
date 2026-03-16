@@ -2,6 +2,7 @@
 
 namespace Coleo\Router;
 
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
@@ -23,6 +24,22 @@ interface RouteInterface
      * @return string
      */
     public function getPattern(): string;
+
+    /**
+     * Add middleware to this route
+     *
+     * @param MiddlewareInterface $middleware
+     * @return self
+     */
+    public function addMiddleware(MiddlewareInterface $middleware): self;
+    
+    /**
+     * Returns the all middleware that were added to this route
+     *
+     * @return array
+     */
+    public function getMiddlewares(): array;
+
 
     /**
      * Link request handler (controller) to this route

@@ -2,6 +2,7 @@
 
 namespace Coleo\Router;
 
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
@@ -13,6 +14,7 @@ class Route implements RouteInterface
     private RequestHandlerInterface $handler;
     private array $methods = [];
     private array $params = [];
+    private array $middlewares = [];
 
     /**
      * Create empty route that should be filled with RouteIterface methods
@@ -23,7 +25,7 @@ class Route implements RouteInterface
     {
         return new self();
     }
-
+    
     /**
      * @inheritDoc
      *
@@ -44,6 +46,28 @@ class Route implements RouteInterface
     public function getPattern(): string
     {
         return $this->pattern;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param MiddlewareInterface $middleware
+     * @return self
+     */
+    public function addMiddleware(MiddlewareInterface $middleware): self
+    {
+        $this->middlewares[] = $middleware;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @return array
+     */
+    public function getMiddlewares(): array
+    {
+        return $this->middlewares;
     }
 
     /**
