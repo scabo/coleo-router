@@ -50,8 +50,9 @@ class Router implements RouterInterface
                 || in_array($request->getMethod(), $route->getAllowedMethods())
             ) {
                 $result = $this->pathMatcher->match($request->getUri()->getPath(), $pattern);
-                if (false !== $result && is_array($result)) {
-                    $route->withParams($result);
+                if ($result === true || is_array($result)) {
+                    $params = is_array($result) ? $result : [];
+                    $route->withParams($params);
                     return $route;
                 }
             }
