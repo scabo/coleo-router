@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Coleo\Router;
 
 use Psr\Http\Message\RequestInterface;
@@ -49,7 +51,7 @@ class Router implements RouterInterface
                 in_array('*', $route->getAllowedMethods())
                 || in_array($request->getMethod(), $route->getAllowedMethods())
             ) {
-                $result = $this->pathMatcher->match($request->getUri()->getPath(), $pattern);
+                $result = $this->pathMatcher->match($request->getUri()->getPath(), (string) $pattern);
                 if ($result === true || is_array($result)) {
                     $params = is_array($result) ? $result : [];
                     $route->withParams($params);

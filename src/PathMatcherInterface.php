@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Coleo\Router;
 
 /**
@@ -14,8 +16,8 @@ interface PathMatcherInterface
      *
      * If the path does match the given pattern,
      * it returns TRUE, else FALSE.
-     * 
-     * Also if there are params in the path and this path has been matched successfully, 
+     *
+     * Also if there are params in the path and this path has been matched successfully,
      * an associative array with them will be returned
      *
      * @param string $path

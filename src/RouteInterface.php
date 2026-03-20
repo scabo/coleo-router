@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Coleo\Router;
 
 use Psr\Http\Server\MiddlewareInterface;
@@ -32,7 +34,7 @@ interface RouteInterface
      * @return self
      */
     public function addMiddleware(MiddlewareInterface $middleware): self;
-    
+
     /**
      * Returns the all middleware that were added to this route
      *

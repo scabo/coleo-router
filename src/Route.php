@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Coleo\Router;
 
 use Psr\Http\Server\MiddlewareInterface;
@@ -25,7 +27,7 @@ class Route implements RouteInterface
     {
         return new self();
     }
-    
+
     /**
      * @inheritDoc
      *

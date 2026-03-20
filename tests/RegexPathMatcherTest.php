@@ -14,11 +14,11 @@ class RegexPathMatcherTest extends TestCase
     /** @test */
     public function testPaths()
     {
-        $matcher = new RegexPathMatcher;
+        $matcher = new RegexPathMatcher();
         $this->assertTrue($matcher->match('/', '/'));
         $this->assertTrue($matcher->match('/about', "/about"));
         $this->assertEquals(
-            ['id' => 123, 'orderby' => 'desc'], 
+            ['id' => 123, 'orderby' => 'desc'],
             $matcher->match('/users/123/desc', "/users/?{id}/?{orderby}")
         );
     }

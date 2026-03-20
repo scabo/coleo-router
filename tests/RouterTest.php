@@ -13,6 +13,6 @@ class RouterTest extends TestCase
     /** @test */
     public function testFunction()
     {
-        // Test
+        $this->markTestSkipped();
     }
 }
